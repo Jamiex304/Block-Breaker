@@ -4,16 +4,17 @@ using System.Collections;
 public class MusicPlayer : MonoBehaviour {
 	
 	//Variables
+	//Diagram on Lecture 68 explains the script calls
 	static MusicPlayer instance = null;
-	// Use this for initialization
-	void Start () {
+	
+	void Awake (){ //All awakes will be called first arcoss all scripts in the level
 		if (instance != null){
-				Destroy (gameObject);
-				//Print statement is for logging purposes
-				print ("Music player exists destorying self");
+			Destroy (gameObject);
+			//Print statement is for logging purposes
+			print ("Music player exists destorying self");
 		}else {
-				instance = this;
-				GameObject.DontDestroyOnLoad(gameObject);
+			instance = this;
+			GameObject.DontDestroyOnLoad(gameObject);
 		}
 	}
 	
