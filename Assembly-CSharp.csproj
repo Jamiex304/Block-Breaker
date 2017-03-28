@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\LoseCollidor.cs" />
      <Compile Include="Assets\Scripts\MusicPlayer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity/Old Unity 2/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.9/Standalone/UnityEngine.UI.dll</HintPath>
