@@ -2,13 +2,23 @@
 using System.Collections;
 
 public class Blocks : MonoBehaviour {
-
+	
+	//public AudioClip crack;
 	public Sprite[] hitSprites;
+	public static int breakableCount = 0;
 	
 	private int timesHit;
 	private LevelManager levelManager;
+	private bool isBreakable;
 	// Use this for initialization
 	void Start () {
+		isBreakable =(this.tag == "Breakable"); 
+		//Keeping track of breakable bricks
+		if(isBreakable){
+			breakableCount++;
+			//print (breakableCount);
+		}
+		
 		timesHit = 0;
 		levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
@@ -19,7 +29,7 @@ public class Blocks : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D (Collision2D col){
-		bool isBreakable = (this.tag == "Breakable");
+		//AudioSource.PlayClipAtPoint(crack, transform.position);
 		if(isBreakable){
 			HandleHits();
 		}
@@ -30,6 +40,9 @@ public class Blocks : MonoBehaviour {
 		int maxHits = hitSprites.Length + 1;
 		//SimulateWin(); Test Flow
 		if(timesHit >= maxHits){
+			breakableCount--;
+			//print (breakableCount);
+			levelManager.BrickDestoryed();// Sends message to the level manager script
 			Destroy(gameObject);
 		}else{
 			LoadSprites();
