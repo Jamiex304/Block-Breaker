@@ -16,4 +16,8 @@ public class LevelManager : MonoBehaviour {
 		Application.Quit(); //Works for console, PC and final build
 	}
 	
+	public void LoadNextLevel(){
+		Application.LoadLevel(Application.loadedLevel + 1);
+	}
+	
 }
